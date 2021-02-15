@@ -71,6 +71,8 @@ namespace Image_Manip
             Help:
             Console.WriteLine("Help menu");
             Console.WriteLine(new string('-', Console.WindowWidth));
+            Console.WriteLine("Usage");
+            Console.WriteLine("executable [FILE] [SWITCH] [PARAMETERS]");
             Console.WriteLine("Switches");
             Console.WriteLine("-n\tBrightness normalization");
             Console.WriteLine("-f\tApply some effects to get a cool-looking image");
