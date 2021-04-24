@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 
 // SixLabors
-using SixLabors.Fonts;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.Formats.Gif;
@@ -61,7 +60,6 @@ namespace Image_Manip
             else if (switches.Contains("f")) goto Funkyfy;
             else if (switches.Contains("b")) goto Border;
             else if (switches.Contains("c")) goto CircularBorder;
-            else if (switches.Contains("w")) goto Win95;
             else goto Help;
 
             #endregion
@@ -78,7 +76,6 @@ namespace Image_Manip
             Console.WriteLine("-f\tApply some effects to get a cool-looking image");
             Console.WriteLine("-b\tAdd a cool border around the image");
             Console.WriteLine("-c\tAdd a cool circular border around the image");
-            Console.WriteLine("-w\tAdd a cool Windows 95 window frame around the image");
             Console.WriteLine();
             Console.WriteLine("Parameters");
             Console.WriteLine("\t-p:w=\tWidth in pixels (example -p:w=5 [must be positive])");
@@ -776,18 +773,6 @@ namespace Image_Manip
                 await Task.Delay(0);
                 return output;
             }
-
-            #endregion
-
-            #region Win95
-
-            Win95: // Needs to be done, before that I want to implement animated borders
-            image = Image.Load<Rgba32>(input);
-            image.Mutate(x => x.Transform(new AffineTransformBuilder().AppendTranslation(new PointF(50, 50))));
-            FontCollection collection = new FontCollection();
-            collection.Install("good times rg.ttf");
-            image.Mutate(x => x.DrawText("Hello world!", collection.CreateFont("good times rg", image.Height / 20, FontStyle.Regular), Color.White, new PointF(50, 0)));
-            image.SaveAsPng("new" + output);
 
             #endregion
 
