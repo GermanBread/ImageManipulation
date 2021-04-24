@@ -4,3 +4,5 @@ bin
 *.gif
 *.png
 *.jpg
+build*
+output

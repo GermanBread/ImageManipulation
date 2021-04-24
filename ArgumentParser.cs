@@ -21,7 +21,7 @@ namespace Image_Manip
             // Call the other function
             return (argsOutput.ToArray(), restOutput.ToArray());
         }
-        public static (string[] /* arguments */, string[] /* non, arguments */) ParseArgs(this string arg, string IFS, string shortPrefix = "-", string longPrefix = "--") {
+        public static (string[] /* arguments */, string[] /* non, arguments */) ParseArgs(this string arg, string IFS = " ", string shortPrefix = "-", string longPrefix = "--") {
             // Call the other method to do the magic
             return arg.Trim().Split(IFS).ParseArgs(shortPrefix, longPrefix);
         }
